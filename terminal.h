@@ -1,3 +1,5 @@
+#pragma once
+
 namespace tc //terminal control
 {
     void move_to(int row,int col);
