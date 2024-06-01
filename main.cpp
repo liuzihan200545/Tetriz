@@ -1,12 +1,21 @@
 #include<iostream>
-#include"a.h"
-
-using namespace std;
+#include"terminal.h"
+#include<thread>
+#include<chrono>
+using namespace std::chrono;
 
 int main(){
-
-    PrintWord("Hello");
-    cout << "Hello World" << endl;
-    cout << ""<<endl;
+    tc::hide_cursor();
+    int i = 1;
+    while (true)
+    {
+        tc::move_to(i++,10);
+        tc::set_back_color(15);
+        std::cout<<"  "<<std::flush;
+        std::this_thread::sleep_for(500ms);
+        tc::reset_color();
+        tc::clean_screen();
+    }
+    
     return 0;
 }
