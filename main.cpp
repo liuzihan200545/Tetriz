@@ -1,37 +1,38 @@
-#include<iostream>
 #include"terminal.h"
-#include<thread>
-#include<chrono>
+#include"control.h"
 #include"utils.h"
 #include"draw.h"
-using namespace std::chrono;
+#include"define.h"
+#include"game.h"
 
 void init(){
     tc::clean_screen();
-    tc::hide_cursor();
-    dw::window(1,1,9,6,std::string("Hold"));
-    dw::window(1,10,12,22,std::string("Tetriz"));
-    dw::window(7,1,9,16,std::string("Status"));
-    dw::window(19,22,8,4,std::string("Info"));
-    dw::window(1,22,8,18,std::string("Next"));
+    gm::start_listener();
+    gm::init();
 }
 
 void loop(){
-    int i = 1;
-    while (true)
+    while (gm::running)
     {
-        tc::move_to(8,4);
+        tc::hide_cursor();
+        dw::window(1,1,9,6,std::string("Hold"));
+        dw::window(1,10,12,22,std::string("Tetriz"));
+        dw::window(7,1,9,16,std::string("Status"));
+        dw::window(19,22,8,4,std::string("Info"));
+        dw::window(1,22,8,18,std::string("Next"));
+
+        tc::move_to(10,4);
         std::cout << "FPS:" << ut::fps() << std::endl;
-        tc::move_to(9,10);
+        tc::move_to(gm::row,gm::col);
         tc::set_back_color(15);
         std::cout<<"  "<<std::flush;
-        std::this_thread::sleep_for(100ms);
+        std::this_thread::sleep_for(10ms);
         tc::reset_color();
-        //tc::clean_screen();
     }
 }
 
 void exit(){
+    tc::clean_screen();
     tc::show_cursor();
     tc::reset_color();
 }
