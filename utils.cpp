@@ -2,7 +2,10 @@
 #include <chrono>
 using namespace std::chrono;
 
-int ut::fps()
+
+namespace ut{
+
+int fps()
 {
     static auto start = steady_clock::now();
     static auto end = start;
@@ -17,4 +20,11 @@ int ut::fps()
         start = end;
     }
     return fps;
+}
+
+inline int b2c(int b)
+{
+    return 2*b-1;
+}
+
 }

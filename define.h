@@ -4,6 +4,7 @@
 #include<termios.h>
 #include<map>
 #include<functional>
+#include<vector>
 
 using namespace std::chrono;
 

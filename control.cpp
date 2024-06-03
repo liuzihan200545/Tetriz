@@ -31,7 +31,9 @@ namespace gm
     void key_event(){
         while(running){
             command = getch();
-            command_func[command]();
+            if(command_func.find(command)!=command_func.end()){
+                command_func[command]();
+            }
         }
     }
 

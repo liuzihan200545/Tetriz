@@ -23,11 +23,18 @@ void loop(){
 
         tc::move_to(10,4);
         std::cout << "FPS:" << ut::fps() << std::endl;
-        tc::move_to(gm::row,gm::col);
-        tc::set_back_color(15);
-        std::cout<<"  "<<std::flush;
-        std::this_thread::sleep_for(10ms);
+
+        tc::move_to(gm::row,ut::b_to_c(gm::col));
+        //tc::set_back_color(15);
+        //std::cout<<"  "<<std::flush;
+
+        dw::tetromino(gm::cur,gm::row,gm::col);
+        std::cout<<std::flush;
         tc::reset_color();
+        std::this_thread::sleep_for(10ms);
+
+
+        
     }
 }
 

@@ -1,9 +1,13 @@
 #pragma once
+#include"tetromino.h"
+
 namespace gm
 {
     extern bool running;
 
     extern int row,col;
+
+    extern Tetromino cur;
 
     void quit();
 
@@ -16,6 +20,8 @@ namespace gm
     void right();
 
     void down();
+
+
 
 
 } // namespace game
